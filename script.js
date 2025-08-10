@@ -26,8 +26,10 @@ function updatePalette() {
 function copyColor(hex, element) {
     navigator.clipboard.writeText(hex).then(() => {
         element.classList.add("copied");
+        element.textContent = "✔";
         setTimeout(() => {
             element.classList.remove("copied");
+            element.textContent = hex;
         }, 800);
     });
 }
@@ -35,10 +37,16 @@ function copyColor(hex, element) {
 // Evento do botão principal
 generateBtn.addEventListener("click", updatePalette);
 
-// Evento dos botões de copiar
-document.querySelectorAll(".copy-btn").forEach((btn, index) => {
-    btn.addEventListener("click", () => {
-        const hex = colorBoxes[index].querySelector(".color-code").textContent;
-        copyColor(hex, btn);
-    });
+// Eventos de copiar (ícone e código)
+colorBoxes.forEach(box => {
+    const hexElement = box.querySelector(".color-code");
+    const copyBtn = box.querySelector(".copy-btn");
+
+    const copyAction = () => {
+        const hex = hexElement.textContent;
+        copyColor(hex, hexElement);
+    };
+
+    copyBtn.addEventListener("click", copyAction);
+    hexElement.addEventListener("click", copyAction);
 });
