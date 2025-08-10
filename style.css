@@ -81,6 +81,34 @@ button:hover {
     margin-top: 5px;
 }
 
+.color-info {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 5px;
+}
+
+.color-code {
+    font-size: 8px;
+}
+
+.copy-btn {
+    font-size: 10px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.1s;
+}
+
+.copy-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Efeito de copiado */
+.copied {
+    color: #00ff00;
+    text-shadow: 1px 1px #000;
+}
+
 /* --- RESPONSIVIDADE --- */
 @media (max-width: 480px) {
     body {
