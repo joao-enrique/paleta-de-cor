@@ -76,11 +76,7 @@ button:hover {
     image-rendering: pixelated;
 }
 
-.color-code {
-    font-size: 8px;
-    margin-top: 5px;
-}
-
+/* Código e botão copiar */
 .color-info {
     display: flex;
     align-items: center;

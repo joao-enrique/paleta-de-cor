@@ -23,6 +23,22 @@ function updatePalette() {
     });
 }
 
-// Evento do botão
+function copyColor(hex, element) {
+    navigator.clipboard.writeText(hex).then(() => {
+        element.classList.add("copied");
+        setTimeout(() => {
+            element.classList.remove("copied");
+        }, 800);
+    });
+}
+
+// Evento do botão principal
 generateBtn.addEventListener("click", updatePalette);
 
+// Evento dos botões de copiar
+document.querySelectorAll(".copy-btn").forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+        const hex = colorBoxes[index].querySelector(".color-code").textContent;
+        copyColor(hex, btn);
+    });
+});
